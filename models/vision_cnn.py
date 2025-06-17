@@ -7,11 +7,13 @@ class VisionCNN(nn.Module):
         super(VisionCNN, self).__init__()
 
         self.conv_block = nn.Sequential(
-            nn.Conv2d(3, 32, kernel_size=3, padding=1),  # 3 input channels (RGB)
+            nn.Conv2d(3, 32, kernel_size=3, padding=1),  # 3 input channels (RGB)\
+            nn.BatchNorm2d(32),
             nn.ReLU(),
             nn.MaxPool2d(2),  # downsample to 16x16
 
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
+            nn.BatchNorm2d(64),
             nn.ReLU(),
             nn.MaxPool2d(2),  # downsample to 8x8
         )
