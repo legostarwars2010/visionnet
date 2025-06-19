@@ -37,8 +37,8 @@ def main():
         print(f"Train Loss: {train_loss:.4f}, Accuracy: {train_acc*100:.2f}%")
 
     # ✅ Save the model
-    torch.save(model.state_dict(), "outputs/cifar10_cnn_v3.1.pth")
-    print("\nModel saved to outputs/cifar10_cnn_v3.1.pth")
+    torch.save(model.state_dict(), "outputs/cifar10_cnn_v4.pth")
+    print("\nModel saved to outputs/cifar10_cnn_v4.pth")
 
 if __name__ == "__main__":
     main()

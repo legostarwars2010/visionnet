@@ -8,7 +8,7 @@ from sklearn.metrics import classification_report, accuracy_score, f1_score, con
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def evaluate_and_log(version, change_desc, model_path="outputs/cifar10_cnn_v2.pth"):
+def evaluate_and_log(version, change_desc, model_path="outputs/cifar10_cnn_v4.pth"):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     _, test_loader = get_cifar10_loaders(batch_size=64)
 
@@ -66,7 +66,7 @@ def evaluate_and_log(version, change_desc, model_path="outputs/cifar10_cnn_v2.pt
 if __name__ == "__main__":
     # Change this per version
     evaluate_and_log(
-    version="v2.1",
-    change_desc="Added third Conv block (128 filters)",
-    model_path="outputs/cifar10_cnn_v2.1.pth"
+    version="v4",
+    change_desc="Added residual blocks to conv layers",
+    model_path="outputs/cifar10_cnn_v4.pth"
 )
