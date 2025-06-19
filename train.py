@@ -23,16 +23,22 @@ def main():
     loss_fn = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
+    from torch.optim.lr_scheduler import StepLR
+    scheduler = StepLR(optimizer, step_size=5, gamma=0.5)
+
+
     # ✅ Training loop
     epochs = 10
     for epoch in range(epochs):
         print(f"\nEpoch {epoch+1}/{epochs}")
         train_loss, train_acc = train(model, train_loader, optimizer, loss_fn, device)
+        scheduler.step()
+        print(f"Learning Rate: {optimizer.param_groups[0]['lr']:.6f}")
         print(f"Train Loss: {train_loss:.4f}, Accuracy: {train_acc*100:.2f}%")
 
     # ✅ Save the model
-    torch.save(model.state_dict(), "outputs/cifar10_cnn_v2.1.pth")
-    print("\nModel saved to outputs/cifar10_cnn.pth")
+    torch.save(model.state_dict(), "outputs/cifar10_cnn_v3.1.pth")
+    print("\nModel saved to outputs/cifar10_cnn_v3.1.pth")
 
 if __name__ == "__main__":
     main()
